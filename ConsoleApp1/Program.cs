@@ -12,7 +12,7 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            Joining();
+            Filtering();
             Console.Read();
         }
         static void IntroToLINQ()
@@ -31,15 +31,16 @@ namespace ConsoleApp1
 
             Console.WriteLine("\n lambda INTROTOLINQ ");
 
-            var list = numbers.Where(n => n % 2 == 0);
+            var list = numbers.Where(nu => nu % 2 == 0);
+
             foreach (var num in list)
             {
                 Console.WriteLine(num);
             }
         }
-
-        static void IntroTOLINQ()
-        { 
+        static void IntroToLINQLambda()
+        {
+        
         }
         static void DataSource()
         {
@@ -51,12 +52,13 @@ namespace ConsoleApp1
 
             Console.WriteLine("DataSource Lambda");
             var queryAllCustomers2 = context.clientes;
-            foreach (var item in queryAllCustomers)
+            foreach (var item in queryAllCustomers2)
             {
                 Console.WriteLine(item.NombreCompañia);
             }
 
         }
+
 
         static void Filtering()
         {
@@ -68,9 +70,9 @@ namespace ConsoleApp1
                 Console.WriteLine(item.Ciudad);
             }
             Console.WriteLine("lambda FILTERING");
-            var queryLondonCustomers2 = context.clientes.Where(c => c.Ciudad == "Londres");
+            var queryLondonCustomers2 = context.clientes.Where(cust => cust.Ciudad == "Londres");
 
-            foreach (var item in queryLondonCustomers)
+            foreach (var item in queryLondonCustomers2)
             {
                 Console.WriteLine(item.Ciudad);
             }
@@ -92,7 +94,8 @@ namespace ConsoleApp1
             //lambda
 
             Console.WriteLine("LAMBDA ORDERING");
-            var custLamb = context.clientes.Where(cust => cust.Ciudad == "Londres").OrderByDescending(cust => cust.NombreCompañia).ToList();
+            var custLamb = context.clientes.Where(cust => cust.Ciudad == "Londres").
+                OrderByDescending(cust => cust.NombreCompañia).ToList();
             foreach (var item in custLamb)
             {
                 Console.WriteLine(item.NombreCompañia);
@@ -119,7 +122,7 @@ namespace ConsoleApp1
 
             var queryCustomersByCity2 = context.clientes.GroupBy(cust => cust.Ciudad);
 
-            foreach (var customerGroup in queryCustomersByCity)
+            foreach (var customerGroup in queryCustomersByCity2)
             {
                 Console.WriteLine(customerGroup.Key);
 
@@ -148,7 +151,7 @@ namespace ConsoleApp1
             custGroup.Count() > 2)
             .OrderBy(custGroup => custGroup.Key);
 
-            foreach (var item in custQuery)
+            foreach (var item in custQuery2)
             {
                 Console.WriteLine(item.Key);
             }
